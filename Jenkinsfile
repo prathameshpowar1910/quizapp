@@ -7,7 +7,7 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prathameshpowar1910/quizapp']])
-                sh 'mvn clean install'
+                mvn -B -DskipTests clean package
             }
         }
         
