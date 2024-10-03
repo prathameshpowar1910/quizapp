@@ -4,15 +4,10 @@ pipeline {
         maven 'maven_399'
     }
     stages{
-        stage('Clean Workspace') {
-            steps {
-                cleanWs()
-            }
-        }
         stage('Build Maven'){
             steps{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prathameshpowar1910/quizapp']])
-                sh 'mvn -B -DskipTests clean package'
+                bat 'mvn -B -DskipTests clean package'
             }
         }
     }
